@@ -1,0 +1,31 @@
+﻿<Window x:Class="LayoutVsRenderTransform.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LayoutVsRenderTransform"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Slider x:Name="slider" Maximum="360" HorizontalAlignment="Left"
+                Width="200" Margin="10"/>
+        
+    <local:DiagonalPanel Grid.Row="1">
+        <Button Content="Welcome"/>
+        <Button Content="to"/>
+        <Button Content="CEF" RenderTransformOrigin="0.5 0.5"
+                Background="Aquamarine">
+            <Button.RenderTransform>
+                   <RotateTransform Angle="{Binding ElementName=slider, Path=Value}"/>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="in depth"/>
+        <Button Content=":-)"/>
+    </local:DiagonalPanel>
+    </Grid>
+</Window>
